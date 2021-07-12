@@ -157,7 +157,7 @@ export default Weather;
 // styles from styled components
 const WeatherContainer = styled.div`
   /* background-color: red; */
-  /* height: 100vh; */
+  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -168,8 +168,8 @@ const WeatherContainer = styled.div`
 const WeatherVideo = styled.video`
   width: 100%;
   /* height: 100%; */
-  height: 650px;
-  /* height: 100vh; */
+  /* height: 650px; */
+  height: 100vh;
   object-fit: cover;
   z-index: -1;
 `;
