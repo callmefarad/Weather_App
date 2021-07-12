@@ -11,13 +11,9 @@ console.log(process.env.REACT_APP_OPEN_WEATHER_API_KEY);
 console.log(process.env.REACT_APP_OPEN_WEATHER_URL);
 // API credentials
 const api = {
-  key: "076082ee0e70e39163acf481e3e34de5",
-  APIbaseURL: "https://api.openweathermap.org/data/2.5/",
+  key: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
+  APIbaseURL: process.env.REACT_APP_OPEN_WEATHER_URL,
 };
-// const api = {
-//   key: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
-//   APIbaseURL: process.env.REACT_APP_OPEN_WEATHER_URL,
-// };
 
 const Weather = () => {
   // creating the states
