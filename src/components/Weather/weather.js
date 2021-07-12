@@ -107,7 +107,7 @@ const Weather = () => {
                   <WeatherCountryShortname>
                     {weatherData.sys.country}
                   </WeatherCountryShortname>
-                  <Flag code={weatherData.sys.country} height="25px" />
+                  <Flag code={weatherData.sys.country} height="28px" />
                 </ShortWrapper>
               </WeatherCountryWrapper>
               <WeatherTemperature>
@@ -300,7 +300,7 @@ const WeatherCountryFullname = styled.div`
   }
 `;
 const ShortWrapper = styled.div`
-  background-color: black;
+  /* background-color: black; */
   width: 100%;
   display: flex;
   flex-wrap: wrap;
