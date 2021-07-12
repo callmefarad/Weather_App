@@ -107,7 +107,7 @@ const Weather = () => {
                   <WeatherCountryShortname>
                     {weatherData.sys.country}
                   </WeatherCountryShortname>
-                  <Flag code={weatherData.sys.country} />
+                  <Flag code={weatherData.sys.country} height="25px" />
                 </ShortWrapper>
               </WeatherCountryWrapper>
               <WeatherTemperature>
@@ -278,10 +278,11 @@ const WeatherCountryWrapper = styled.div`
   justify-content: center;
   align-items: center;
   align-self: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 const WeatherCountryFullname = styled.div`
+  /* background-color: yellow; */
   font-size: 70px;
   font-weight: bold;
 
@@ -299,26 +300,30 @@ const WeatherCountryFullname = styled.div`
   }
 `;
 const ShortWrapper = styled.div`
+  background-color: black;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 5px;
+  margin-bottom: 10px;
 `;
 const WeatherCountryShortname = styled.div`
-  font-size: 90px;
+  font-size: 50px;
   font-weight: bold;
 
   @media (max-width: 768px) {
-    font-size: 65px;
+    font-size: 35px;
   }
   @media (max-width: 425px) {
-    font-size: 55px;
+    font-size: 35px;
   }
   @media (max-width: 375px) {
-    font-size: 45px;
+    font-size: 35px;
   }
   @media (max-width: 320px) {
-    font-size: 40px;
+    font-size: 30px;
   }
 `;
 const WeatherTemperature = styled.div`
