@@ -192,7 +192,7 @@ const InputWrapper = styled.div`
   width: 100;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   margin-top: 15px;
 
   input {
@@ -306,7 +306,7 @@ const ShortWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   margin-bottom: 10px;
 `;
 const WeatherCountryShortname = styled.div`
