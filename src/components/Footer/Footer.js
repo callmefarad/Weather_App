@@ -11,7 +11,7 @@ const Footer = () => {
     <div>
       <FooterContainer>
         <Copywrite>
-          &copy; Ubani U. Friday {getCurrentYear(new Date())}
+          &copy; Ubani U. Friday {getCurrentYear(new Date())} 👌
         </Copywrite>
       </FooterContainer>
     </div>
@@ -22,11 +22,11 @@ export default Footer;
 
 // styled components
 const FooterContainer = styled.div`
-  background-color: black;
+  background-color: #003366;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20px;
+  height: 40px;
   width: 100vw;
   padding-top: 10px;
   padding-bottom: 10px;

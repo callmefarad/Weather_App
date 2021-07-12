@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-
 import styled from "styled-components";
 import axios from "axios";
 import "antd/dist/antd.css";
 import { Input } from "antd";
+import Flag from "react-world-flags";
 import weatherVideo from "../../videos/weather1.mp4";
-// require("dotenv").config();
 
+// API credentials
 console.log(process.env.REACT_APP_OPEN_WEATHER_API_KEY);
 console.log(process.env.REACT_APP_OPEN_WEATHER_URL);
-// API credentials
 const api = {
   key: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
   APIbaseURL: process.env.REACT_APP_OPEN_WEATHER_URL,
@@ -104,9 +103,12 @@ const Weather = () => {
                 <WeatherCountryFullname>
                   {weatherData.name}
                 </WeatherCountryFullname>
-                <WeatherCountryShortname>
-                  {weatherData.sys.country}
-                </WeatherCountryShortname>
+                <ShortWrapper>
+                  <WeatherCountryShortname>
+                    {weatherData.sys.country}
+                  </WeatherCountryShortname>
+                  <Flag code={weatherData.sys.country} />
+                </ShortWrapper>
               </WeatherCountryWrapper>
               <WeatherTemperature>
                 {Math.round(weatherData.main.temp)}°c
@@ -295,6 +297,12 @@ const WeatherCountryFullname = styled.div`
   @media (max-width: 320px) {
     font-size: 40px;
   }
+`;
+const ShortWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 `;
 const WeatherCountryShortname = styled.div`
   font-size: 90px;
