@@ -93,16 +93,25 @@ const Weather = () => {
               muted
             />
             <WeatherWrapper>
-              <Input
-                onKeyPress={APIcall}
-                onChange={handleChange}
-                value={input}
-                placeholder="Search a country"
-              />
+              <InputWrapper>
+                <Input
+                  // onKeyPress={APIcall}
+                  onChange={handleChange}
+                  value={input}
+                  placeholder="Enter a country"
+                />
+                <InputButton onClick={APIcall}>Search</InputButton>
+              </InputWrapper>
+
               <WeatherDateBuilder>{dateBuilder(new Date())}</WeatherDateBuilder>
-              <WeatherGeo>
-                {weatherData.name}, {weatherData.sys.country}
-              </WeatherGeo>
+              <WeatherCountryWrapper>
+                <WeatherCountryFullname>
+                  {weatherData.name}
+                </WeatherCountryFullname>
+                <WeatherCountryShortname>
+                  {weatherData.sys.country}
+                </WeatherCountryShortname>
+              </WeatherCountryWrapper>
               <WeatherTemperature>
                 {Math.round(weatherData.main.temp)}°c
               </WeatherTemperature>
@@ -122,14 +131,20 @@ const Weather = () => {
             muted
           />
           <WeatherWrapper>
-            <Input
-              onKeyPress={APIcall}
-              onChange={handleChange}
-              value={input}
-              placeholder="Search a country"
-            />
+            <InputWrapper>
+              <Input
+                // onKeyPress={APIcall}
+                onChange={handleChange}
+                value={input}
+                placeholder="Enter a country"
+              />
+              <InputButton onClick={APIcall}>Search</InputButton>
+            </InputWrapper>
             <WeatherDateBuilder>{dateBuilder(new Date())}</WeatherDateBuilder>
-            <WeatherGeo>Default, null</WeatherGeo>
+            <WeatherCountryWrapper>
+              <WeatherCountryFullname>Default</WeatherCountryFullname>
+              <WeatherCountryShortname>Null</WeatherCountryShortname>
+            </WeatherCountryWrapper>
             <WeatherTemperature>0°c</WeatherTemperature>
             <WeatherDescription>description</WeatherDescription>
           </WeatherWrapper>
@@ -144,7 +159,7 @@ export default Weather;
 // styles from styled components
 const WeatherContainer = styled.div`
   /* background-color: red; */
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -154,28 +169,79 @@ const WeatherContainer = styled.div`
 `;
 const WeatherVideo = styled.video`
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  height: 650px;
+  /* height: 100vh; */
   object-fit: cover;
   z-index: -1;
 `;
 const WeatherWrapper = styled.div`
   /* background-color: green; */
-  width: 80%;
-  height: 100vh;
+  width: 100%;
+  /* height: 100vh; */
   display: flex;
   position: absolute;
   flex-direction: column;
-  /* top: 0; */
+  top: 0;
+  bottom: 0;
   padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  /* margin-top: 20px; */
+  /* margin-bottom: 20px; */
+`;
+const InputWrapper = styled.div`
+  display: flex;
+  /* background-color: red; */
+  width: 100;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 15px;
+
   input {
+    /* flex-grow: 1; */
     align-self: center;
-    height: 60px;
-    width: 80%;
-    margin-top: 15px;
+    /* height: 150px; */
+    width: 25%;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 5px;
     font-size: 20px;
+
+    @media (max-width: 768px) {
+      width: 60%;
+    }
+    @media (max-width: 425px) {
+      width: 80%;
+    }
+    @media (max-width: 375px) {
+      width: 85%;
+    }
+    @media (max-width: 320px) {
+      width: 85%;
+    }
+  }
+`;
+const InputButton = styled.div`
+  background-color: #003366;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 5px; */
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  border: none;
+
+  &:hover {
+    /* background-color: #178fd7; */
+    background-color: white;
+    color: #003366;
+    transform: all ease-out 750ms;
+    /* border-width: 10px solid; */
+    border: 1px solid;
+    border-color: #178fd7;
   }
 `;
 const WeatherDateBuilder = styled.div`
@@ -188,7 +254,7 @@ const WeatherDateBuilder = styled.div`
   white-space: nowrap;
 
   @media (max-width: 768px) {
-    font-size: 45px;
+    font-size: 40px;
   }
   @media (max-width: 425px) {
     font-size: 30px;
@@ -200,26 +266,46 @@ const WeatherDateBuilder = styled.div`
     font-size: 22px;
   }
 `;
-const WeatherGeo = styled.div`
+const WeatherCountryWrapper = styled.div`
   color: white;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.19);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   box-shadow: 0px 5px 7px -2px rgba(0, 0, 0, 0.35);
-  margin-top: 35px;
-  font-size: 55px;
-  font-weight: bold;
+  margin-top: 30px;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   align-self: center;
   padding-left: 20px;
   padding-right: 20px;
+`;
+const WeatherCountryFullname = styled.div`
+  font-size: 70px;
+  font-weight: bold;
 
   @media (max-width: 768px) {
-    font-size: 95px;
+    font-size: 65px;
+  }
+  @media (max-width: 425px) {
+    font-size: 55px;
+  }
+  @media (max-width: 375px) {
+    font-size: 45px;
+  }
+  @media (max-width: 320px) {
+    font-size: 40px;
+  }
+`;
+const WeatherCountryShortname = styled.div`
+  font-size: 90px;
+  font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 65px;
   }
   @media (max-width: 425px) {
     font-size: 55px;
@@ -239,15 +325,16 @@ const WeatherTemperature = styled.div`
   color: white;
 `;
 const WeatherDescription = styled.div`
-  font-size: 35px;
+  font-size: 50px;
   display: flex;
   justify-content: center;
-  color: tomato;
+  color: #003366;
   font-weight: bold;
   margin-bottom: 20px;
+  text-transform: capitalize;
 
   @media (max-width: 768px) {
-    font-size: 55px;
+    font-size: 45px;
   }
   @media (max-width: 425px) {
     font-size: 35px;
